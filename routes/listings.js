@@ -13,6 +13,14 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/new", (req, res) => {
+  const resources = [{id: 1, name: "cylinder"}, {id: 2, name: "plasma"}, {id: 3, name: "concentrator"}]
+  const templateVars = {
+    'data': resources,
+  };
+  res.render('new_listing', templateVars);
+});
+
 router.post('/', (req, res) => {
   console.log("req:",req);
   const user = {
@@ -20,5 +28,5 @@ router.post('/', (req, res) => {
   }
   res.status(201).json(req.body)
  })
- 
+
 module.exports = router;
