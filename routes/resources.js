@@ -5,10 +5,13 @@ const { addResource } = require('../db/queries/queries')
 
 
 router.post("/new", (req, res) => {
-    console.log(req.body)
   addResource(req.body['name']).then(data => {
-    res.render('resources');
+    res.status(201).render('resources');
   });
+});
+
+router.get("/new", (req, res) => {
+    res.render('new_resource');
 });
 
 module.exports = router;
