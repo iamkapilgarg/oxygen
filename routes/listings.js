@@ -6,8 +6,10 @@ const { listListings } = require('../db/queries/queries')
 
 router.get("/", (req, res) => {
   listListings().then(data => {
-    console.log(JSON.stringify(data))
-    res.send(data)
+    const templateVars = {
+      'data': data,
+    };
+    res.render('listings', templateVars);
   });
 });
 
