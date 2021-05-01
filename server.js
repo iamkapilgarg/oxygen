@@ -10,11 +10,10 @@ const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
 const listingsRoutes = require("./routes/listings");
+const resourcesRoutes = require("./routes/resources");
 
 app.use(morgan('dev'));
-
 app.use(express.json());
-app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -23,8 +22,10 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use("/listings", listingsRoutes);
+app.use("/resources", resourcesRoutes);
 
-app.use("/listings", listingsRoutes)
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   res.render("index");
