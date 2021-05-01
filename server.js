@@ -13,6 +13,7 @@ const listingsRoutes = require("./routes/listings");
 
 app.use(morgan('dev'));
 
+app.use(express.json());
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
