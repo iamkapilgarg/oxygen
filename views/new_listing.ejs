@@ -9,66 +9,50 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/utils.js"></script> 
+    <script type="text/javascript" src="/scripts/utils.js"></script>
 
-   <!-- <script>
-    var data = '<%-data%>'
-    console.log(data);
-    $(document).ready(function(){
-	  $('#state').on('change', function() {
-		$('#city').append(new Option("option text", "value"));
-		
-	  });
-
-})
-   </script>  -->
-   
   </head>
   <body>
     <%- include('partials/_header') %>
     <h1>New Listing</h1>
     <form action="new" method="post">
       <label for="listing_type">I am a: </label>
-      <select id="listing_type">
-        <option value="DONOR">DONOR</option>
-        <option value="SEEKER">SEEKER</option>
+      <select name="type" id="type">
+        <option value="donor">Donor</option>
+        <option value="seeker">Seeker</option>
       </select>
       <br>
       <label for="Resourse">Resource</label>
       <select name="resource" id="resource">
         <% for (let resource of data){ %>
-          
           <option value="<%= resource.id %>"><%= resource.name %></option>
         <%}%>
       </select><br>
 
       <label for="quantity">Quantity</label>
-      <input type="number" id="quantity" >
+      <input type="number" id="quantity" name="quantity">
       <br>
 
-      <label for="Oxygen Level">Oxygen Level</label>
-      <input type="number" id="oxygen_level" placeholder="Optional"> 
+      <label for="oxygenlevel">Oxygen Level</label>
+      <input type="number" id="oxygen_level" placeholder="Optional" name="oxygenlevel">
       <br>
 
-<input type="hidden" id="allstates" value='<%= JSON.stringify(states) %>'>
+      <input type="hidden" id="allstates" value='<%= JSON.stringify(states) %>'>
       <label for="State">State</label>
       <select name="State" id="state">
-        <% for (let state in states){ %>
-          
-          <option value="<%= state %>"><%= state %></option>
-        <%}%>
+      <% for (let state in states){ %>
+        <option value="<%= state %>"><%= state %></option>
+      <%}%>
       </select><br>
-
-
       <label for="City">City</label>
       <select name="City" id="city">
       </select><br>
-
-      <label for="Area">Area</label>
-      <input type="text" id="area">
+      <label for="area">Area</label>
+      <input type="text" id="area" name="area">
       <br>
-
-
+      <label for="pincode">Pincode</label>
+      <input type="text" id="pincode" name="pincode">
+      <br>
       <button type="submit">submit</button>
     </form>
   </body>

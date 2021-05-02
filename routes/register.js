@@ -18,16 +18,14 @@ router.post('/', (req, res) => {
     return;
   }
   getUserByPhone(req.body.phone).then((data) =>{
-    console.log('kapil data', data)
     if(data.length === 0) {
-      console.log('user create');
       let user = {
         name: req.body.name,
         phone_number: req.body.phone,
         password: bcrypt.hashSync(req.body.password, 10),
         id
       };
-      addUsers(user).catch((err) => {
+      addUsers(user).then((err) => {
         console.log(err)
       })
       req.session.userId = id;

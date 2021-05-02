@@ -1,6 +1,7 @@
 const knex = require('../../lib/db');
 
 const addUsers = (user) => {
+  console.log('user is', user)
     return knex('users')
         .insert(user);
 }
@@ -11,7 +12,6 @@ const getUserByPhone = (phone) => {
 }
 
 const getUserById = (id) => {
-    console.log("checking id", id)
     return knex('users').where('id', id)
         .select('*');
 }

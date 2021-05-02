@@ -19,6 +19,7 @@ const listListings = () => {
 }
 
 const postListing = (list) => {
+  console.log(list)
     return knex("listings").insert({
         user_id: list.user_id,
         resource_id: list.resource_id,

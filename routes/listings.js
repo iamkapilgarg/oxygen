@@ -14,13 +14,11 @@ router.get("/", (req, res) => {
       'data': data,
       username
     };
-    console.log(templateVars)
     res.render('listings', templateVars);
   });
 });
 
 router.get("/new", (req, res) => {
-  console.log("nikhil:",places);
   let username = req.session.username;
   listResources().then(data => {
     const templateVars = {
@@ -29,18 +27,30 @@ router.get("/new", (req, res) => {
       'states':places
     };
     res.render('new_listing', templateVars);
-  });
+  }).catch((err) => {
+    console.log(err)
+  })
 });
 
 router.post("/new", (req, res) => {
   console.log("Request Body:", req.body);
-  postListing(req.body)
+  const list = {
+    user_id: req.session.userId,
+    resource_id: req.body.resource,
+    quantity: req.body.quantity,
+    listing_type: req.body.type,
+    oxygen_level: req.body.oxygenlevel,
+    state: req.body.State,
+    city: req.body.City,
+    area: req.body.area,
+    pincode: req.body.pincode
+}
+  postListing(list)
     .then((data) => {
-      console.log(data);
-      res.status(200).send();
+      res.status(200).redirect('/listings')
     })
     .catch((err) => {
-      console.log("Error in posting:", err);
+      console.log(err)
       res.status(400).end();
     });
 });
@@ -69,7 +79,6 @@ router.put("/:id", (req, res) => {
       res.status(200).redirect('/listings');
     })
     .catch((err) => {
-      console.log("Error in updating:", err);
       res.status(400).end();
     });
 });
