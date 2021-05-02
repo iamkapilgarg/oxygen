@@ -5,7 +5,7 @@ const listListings = () => {
         .join('resources', 'listings.resource_id', 'resources.id')
         .join('users', 'listings.user_id', 'users.id')
         .select('users.id',
-            'users.name',
+            'users.name as username',
             'users.phone_number',
             'listings.city',
             'listings.state',

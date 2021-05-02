@@ -6,50 +6,71 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/tablefilter.js"></script>
-    
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body>
     <%- include('partials/_header') %>
     <h1>Listing</h1>
-    <table class="table table-responsive" id="list" >
+    <table class="table table-responsive" id="list">
       <thead class="thead-light">
         <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Resource</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Oxygen Level</th>
-        <th scope="col">State</th>
-        <th scope="col">City</th>
-        <th scope="col">Area</th>
-        <th scope="col">PIN</th>
-        <th scope="col">Phone</th>
-      </tr>
+          <th scope="col">Type</th>
+          <th scope="col">Resource</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Oxygen Level</th>
+          <th scope="col">Name</th>
+
+          <th scope="col">State</th>
+          <th scope="col">City</th>
+          <th scope="col">Area</th>
+          <th scope="col">PIN</th>
+          <th scope="col">Phone</th>
+        </tr>
       </thead>
       <tbody>
-        <%
-        for(let row of data) {%>
+        <% for(let row of data) {%>
         <tr>
           <td><%= row.listing_type %></td>
           <td><%= row.name %></td>
           <td><%= row.quantity %></td>
           <td><%= row.oxygen_level %></td>
+          <td><%= row.username %></td>
           <td><%= row.state %></td>
           <td><%= row.city %></td>
           <td><%= row.area %></td>
           <td><%= row.pincode %></td>
-          <td><%= row.phone_number %></td>
+
+          <td>
+            <% if(typeof username === 'undefined') { %>
+            <p>*******</p>
+            <% }else { %>
+              <p><%= row.phone_number %></p>
+            <a href="tel:<%= row.phone_number %>"
+              ><i class="fa fa-phone" style="font-size: 24px"></i>
+            </a>
+            <a href=" https://wa.me/+91<%= row.phone_number %>"
+              ><i class="fa fa-whatsapp" style="font-size: 24px"></i>
+            </a>
+              <% } %>
+          </td>
         </tr>
         <% } %>
       </tbody>
     </table>
 
     <script type="text/javascript" src="/scripts/utils.js"></script>
-
   </body>
 </html>
