@@ -2,8 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { listResources } = require('../db/queries/resources_queries')
-const { listListings, postListing, deleteListingById, updateListingById, getListingById } = require('../db/queries/listings_queries');
-const { getUserById } = require('../db/queries/users_queries')
+const { listListings, postListing, deleteListingById, updateListingById, getListingById, listListingsByUserId } = require('../db/queries/listings_queries');
 
 const {places} = require('../resources/state-city')
 
@@ -29,6 +28,17 @@ router.get("/new", (req, res) => {
     res.render('new_listing', templateVars);
   }).catch((err) => {
     console.log(err)
+    })
+});
+router.get("/me", (req, res) => {
+  const userId = req.session.userId;
+  const username = req.session.username;
+  listListingsByUserId(userId).then((data) => {
+    const templateVars = {
+      'data': data,
+      username
+    };
+    res.render('userlistings', templateVars);
   })
 });
 
