@@ -1,4 +1,4 @@
-
+const knex = require('../../lib/db');
 
 const listListings = () => {
     return knex('listings')
