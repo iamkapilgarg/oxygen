@@ -1,40 +1,36 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const { listResources  } = require('../db/queries/resources_queries')
+const { listResources } = require('../db/queries/resources_queries')
 const { listListings, postListing, deleteListingById, updateListingById, getListingById } = require('../db/queries/listings_queries');
 const { getUserById } = require('../db/queries/users_queries')
 
 
 router.get("/", (req, res) => {
-  let cookiesUserId = req.session.userId;
-  getUserById(cookiesUserId).then((user) => {
-    let username = undefined
-    if(user.length > 0) {
-      username = user[0].name
-    }
-    listListings().then(data => {
-      const templateVars = {
-        'data': data,
-        username
-      };
-      console.log(templateVars)
-      res.render('listings', templateVars);
-    });
+  let username = req.session.username;
+  listListings().then(data => {
+    const templateVars = {
+      'data': data,
+      username
+    };
+    console.log(templateVars)
+    res.render('listings', templateVars);
   });
 });
 
 router.get("/new", (req, res) => {
+  let username = req.session.username;
   listResources().then(data => {
     const templateVars = {
-      data
+      data,
+      username
     };
     res.render('new_listing', templateVars);
   });
 });
 
 router.post("/", (req, res) => {
-  console.log("Request Body:",req.body);
+  console.log("Request Body:", req.body);
   postListing(req.body)
     .then((data) => {
       console.log(data);
@@ -47,9 +43,11 @@ router.post("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  let username = req.session.username;
   getListingById(req.params.id).then(data => {
     const templateVars = {
       'data': data[0],
+      username
     };
     res.render('listing', templateVars);
   });

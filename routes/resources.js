@@ -11,7 +11,8 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
-    res.render('new_resource');
+  let username = req.session.username;
+    res.render('new_resource', {username});
 });
 
 module.exports = router;

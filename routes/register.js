@@ -27,11 +27,11 @@ router.post('/', (req, res) => {
         password: bcrypt.hashSync(req.body.password, 10),
         id
       };
-      console.log('kapil user', user)
       addUsers(user).catch((err) => {
         console.log(err)
       })
       req.session.userId = id;
+      req.session.username = req.body.name
       res.redirect('listings');
     } else {
       res.status(400);

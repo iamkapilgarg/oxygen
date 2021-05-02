@@ -13,6 +13,7 @@ const listingsRoutes = require("./routes/listings");
 const resourcesRoutes = require("./routes/resources");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login")
+const logoutRoutes = require("./routes/logout")
 const cookieSession = require('cookie-session');
 
 app.use(cookieSession({
@@ -34,6 +35,7 @@ app.use("/listings", listingsRoutes);
 app.use("/resources", resourcesRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
+app.use("/logout", logoutRoutes)
 
 
 app.set("view engine", "ejs");
