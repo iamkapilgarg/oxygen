@@ -45,9 +45,24 @@ const postListing = (list) => {
   });
 };
 
+const deleteListing = (id) => {
+  return knex('listings')
+    .where('id', id)
+    .del();
+}
+
+const updateListing = (id, listing) => {
+  console.log(id, listing)
+  return knex('listings')
+    .where('id', id)
+    .update(listing);
+}
+
 module.exports = {
   listListings,
   addResource,
   listResources,
-  postListing
+  postListing,
+  deleteListing,
+  updateListing
 }
