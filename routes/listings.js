@@ -64,7 +64,7 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   
-  updateListingById(req.params.id, listingObject(req.body.data))
+  updateListingById(req.params.id, updateListingObject(req.body.data))
     .then((data) => {
       res.status(200).redirect('/listings');
     })
@@ -74,7 +74,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-const listingObject = obj => {
+const updateListingObject = obj => {
   return {
     quantity: obj.quantity,
     oxygen_level: obj.oxygen_level,

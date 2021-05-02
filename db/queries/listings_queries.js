@@ -77,7 +77,6 @@ const deleteListingById = (id) => {
 }
 
 const updateListingById = (id, listing) => {
-    console.log(id, listing)
     return knex('listings')
         .where('id', id)
         .update(listing);
