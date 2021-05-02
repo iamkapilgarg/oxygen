@@ -27,7 +27,13 @@ const addResource = (name) => {
   });
 }
 
+const listResources = () => {
+  return knex('resources')
+  .select('*');
+}
+
 module.exports = {
   listListings,
   addResource,
+  listResources,
 }

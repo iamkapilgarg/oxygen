@@ -6,7 +6,7 @@ const { addResource } = require('../db/queries/queries')
 
 router.post("/new", (req, res) => {
   addResource(req.body['name']).then(data => {
-    res.status(201).render('resources');
+    res.status(201).redirect('/listings');
   });
 });
 
