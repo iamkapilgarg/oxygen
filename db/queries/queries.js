@@ -7,10 +7,10 @@ const listListings = () => {
     .select('users.id',
       'users.name',
       'users.phone_number',
-      'users.city',
-      'users.state',
-      'users.area',
-      'users.pincode',
+      'listings.city',
+      'listings.state',
+      'listings.area',
+      'listings.pincode',
       'resources.name',
       'listings.quantity',
       'listings.listing_type',
@@ -30,8 +30,6 @@ const listResources = () => {
 }
 
 const postListing = (list) => {
-  console.log("List on the way ", list);
-
   return knex("listings")
     .insert({
       user_id: list.user_id,
