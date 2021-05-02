@@ -2,8 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const {getUserByPhone} = require('../db/queries/queries')
-const {addUsers} = require('../db/queries/user_queries')
+const { addUsers, getUserByPhone } = require('../db/queries/users_queries')
 
 
 router.get("/", (req, res) => {

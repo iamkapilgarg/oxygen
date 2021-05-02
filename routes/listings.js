@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const { listListings, listResources, postListing, deleteListing, updateListing, getUserById } = require('../db/queries/queries')
+const { listResources  } = require('../db/queries/resources_queries')
+const { listListings, postListing, deleteListing, updateListing } = require('../db/queries/listings_queries');
+const { getUserById } = require('../db/queries/users_queries')
 
 
 router.get("/", (req, res) => {

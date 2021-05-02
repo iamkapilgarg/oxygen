@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const { addResource } = require('../db/queries/queries')
+const { addResource } = require('../db/queries/resources_queries')
 
 
 router.post("/new", (req, res) => {
