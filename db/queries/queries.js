@@ -32,14 +32,17 @@ const listResources = () => {
 const postListing = (list) => {
   console.log("List on the way ", list);
 
-  return knex("listings")
-    .insert({
-      user_id: list.user_id,
-      resource_id: list.resource_id,
-      quantity: list.quantity,
-      listing_type: list.listing_type,
-      oxygen_level: list.oxygen_level,
-    });
+  return knex("listings").insert({
+    user_id: list.user_id,
+    resource_id: list.resource_id,
+    quantity: list.quantity,
+    listing_type: list.listing_type,
+    oxygen_level: list.oxygen_level,
+    state : list.state,
+    city: list.city,
+    area : list.area,
+    pincode : list.pincode
+  });
 };
 
 const deleteListing = (id) => {
