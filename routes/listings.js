@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { listResources  } = require('../db/queries/resources_queries')
-const { listListings, postListing, deleteListingById, updateListingById } = require('../db/queries/listings_queries');
+const { listListings, postListing, deleteListingById, updateListingById, getListingById } = require('../db/queries/listings_queries');
 const { getUserById } = require('../db/queries/users_queries')
 
 
@@ -44,6 +44,15 @@ router.post("/", (req, res) => {
       console.log("Error in posting:", err);
       res.status(400).end();
     });
+});
+
+router.get("/:id", (req, res) => {
+  getListingById(req.params.id).then(data => {
+    const templateVars = {
+      'data': data[0],
+    };
+    res.render('listing', templateVars);
+  });
 });
 
 router.delete("/:id", (req, res) => {
