@@ -9,6 +9,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  const regExp = /[a-zA-Z]/g;
+  if (regExp.test(req.body.phone)) {
+    return res.render('error', { errorMessage: 'Invalid Phone Number' })
+  }
   getUserByPhone(req.body.phone).then((data) => {
     if (data.length === 0) {
       res.status(403);
