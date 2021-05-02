@@ -33,7 +33,6 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/new", (req, res) => {
-  console.log("Request Body:", req.body);
   const list = {
     user_id: req.session.userId,
     resource_id: req.body.resource,

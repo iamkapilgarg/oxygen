@@ -1,7 +1,6 @@
 const knex = require('../../lib/db');
 
 const addUsers = (user) => {
-  console.log('user is', user)
     return knex('users')
         .insert(user);
 }

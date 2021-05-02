@@ -14,12 +14,12 @@ const listListings = () => {
             'resources.name',
             'listings.quantity',
             'listings.listing_type',
-            'listings.oxygen_level'
+            'listings.oxygen_level',
+            'listings.id'
         );
 }
 
 const postListing = (list) => {
-  console.log(list)
     return knex("listings").insert({
         user_id: list.user_id,
         resource_id: list.resource_id,
@@ -67,7 +67,8 @@ const listListingsByUserId = (id) => {
             'resources.name',
             'listings.quantity',
             'listings.listing_type',
-            'listings.oxygen_level'
+            'listings.oxygen_level',
+            'listings.id as listingId'
         );
 }
 
