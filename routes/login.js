@@ -11,29 +11,30 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  getUserByPhone(phone).then((data) =>{
-    if(data.length === 0){
+  getUserByPhone(req.body.phone).then((data) => {
+    if (data.length === 0) {
       res.status(403);
-      res.render('error', {errorMessage: errorMessages.LOGIN_FAILED});
+      res.render('error', { errorMessage: 'Login failed' });
       return;
     }
 
     if (!matchPhonePassword(req.body.phone, req.body.password, data[0])) {
       res.status(403);
-      res.render('error', {errorMessage: errorMessages.LOGIN_FAILED});
+      res.render('error', { errorMessage: 'Login failed' });
       return;
     }
     req.session.userId = data[0].id;
-    res.redirect('/urls');
+    req.session.username = data[0].name;
+    res.redirect('/listings');
   });
 });
 
-const matchPhonePassword = function(phone, password, users) {
-  for (let key in users) {
-    if (users[key].phone_number === phone && bcrypt.compareSync(password, users[key].password)) {
-      return true;
-    }
+const matchPhonePassword = function (phone, password, user) {
+  if (user.phone_number === phone && bcrypt.compareSync(password, user.password)) {
+    console.log('returning true');
+    return true;
   }
+  console.log('returning false');
   return false;
 };
 
