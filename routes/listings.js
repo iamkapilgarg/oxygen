@@ -23,6 +23,7 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log("Request Body:",req.body);
   postListing(req.body)
     .then((data) => {
       console.log(data);
