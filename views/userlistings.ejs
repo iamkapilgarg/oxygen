@@ -14,15 +14,17 @@
   <body>
     <%- include('partials/_header') %>
     <h1>Listing</h1>
-    <table>
+    <table class="table table-striped">
       <thead>
-        <th>name</th>
-        <th>Phone</th>
-        <th>Type</th>
-        <th>Area</th>
-        <th>City</th>
-        <th>State</th>
-        <th>PIN</th>
+        <tr>
+        <th scope="col">name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Type</th>
+        <th scope="col">Area</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">PIN</th>
+      </tr>
       </thead>
       <tbody>
         <% for(let row of data) {%>
