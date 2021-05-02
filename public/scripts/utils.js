@@ -27,7 +27,7 @@ var filtersConfig = {
 	no_results_message: true,
 	col_types: [
 	  'string', 'string', 'number',
-	  'number', 'string', 'string',
+	  'number', 'string','string', 'string',
 	  'string', 'number', 'number'
 	],
 	extensions: [{
