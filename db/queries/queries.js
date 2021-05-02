@@ -7,10 +7,10 @@ const listListings = () => {
     .select('users.id',
       'users.name',
       'users.phone_number',
-      'users.city',
-      'users.state',
-      'users.area',
-      'users.pincode',
+      'listings.city',
+      'listings.state',
+      'listings.area',
+      'listings.pincode',
       'resources.name',
       'listings.quantity',
       'listings.listing_type',
@@ -38,6 +38,10 @@ const postListing = (list) => {
     quantity: list.quantity,
     listing_type: list.listing_type,
     oxygen_level: list.oxygen_level,
+    state : list.state,
+    city: list.city,
+    area : list.area,
+    pincode : list.pincode
   });
 };
 
