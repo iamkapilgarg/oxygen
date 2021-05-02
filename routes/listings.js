@@ -1,15 +1,24 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const { listListings, listResources, postListing, deleteListing, updateListing } = require('../db/queries/queries')
+const { listListings, listResources, postListing, deleteListing, updateListing, getUserById } = require('../db/queries/queries')
 
 
 router.get("/", (req, res) => {
-  listListings().then(data => {
-    const templateVars = {
-      'data': data,
-    };
-    res.render('listings', templateVars);
+  let cookiesUserId = req.session.userId;
+  getUserById(cookiesUserId).then((user) => {
+    let username = undefined
+    if(user.length > 0) {
+      username = user[0].name
+    }
+    listListings().then(data => {
+      const templateVars = {
+        'data': data,
+        username
+      };
+      console.log(templateVars)
+      res.render('listings', templateVars);
+    });
   });
 });
 
