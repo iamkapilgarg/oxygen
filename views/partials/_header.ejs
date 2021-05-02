@@ -10,15 +10,16 @@
           <a class="nav-item nav-link"  href="/login">Login</a>
           <a class="nav-item nav-link"  href="/register">Register</a>
         <% }else { %>
-          <p class="nav-item">Logged in as: <%= " "+username+"  " %></p>
+          <span class="nav-item nav-link disabled"><%= username %></span>
           <form method="POST" action="/logout">
             <button type="submit" class="btn btn-info">Logout</button>
           </form>
+          <a class="nav-item nav-link" href="/listings/new">Create new listing</a>
+          <a class="nav-ite nav-link" href="/users/listings">Your listings</a>
           <% } %>
       </div>
     </div>
     <div class="navbar-nav"></div>
-
         <div class="navbar-nav"></div>
   </nav>
 </header>

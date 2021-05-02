@@ -20,14 +20,14 @@
     <%- include('partials/_header') %>
     <h1>Listing</h1>
     <form action="/listings/<%= data.id %>?_method=PUT" method="POST">
-      <input name="data[name]" value="<%= data.name %>" readonly>
-      <input name="data[phone_number]" value="<%= data.phone_number %>" readonly>
-      <input name="data[listing_type]" value="<%= data.listing_type %>" readonly>
-      <input name="data[oxygen_level]" value="<%= data.oxygen_level %>">
-      <input name="data[area]" value="<%= data.area %>">
-      <input name="data[city]" value="<%= data.city %>">
-      <input name="data[state]" value="<%= data.state %>">
-      <input name="data[pincode]" value="<%= data.pincode %>">
+      <label for="data[name]"></label>Resource: <input name="data[name]" value="<%= data.name %>" readonly><br>
+      <label for="data[phone_number]">Phone: </label><input name="data[phone_number]" value="<%= data.phone_number %>" readonly><br>
+      <label for="data[listing_type]">I am a: </label><input name="data[listing_type]" value="<%= data.listing_type %>" readonly><br>
+      <label for="data[oxygen_level]">Oxygen Level</label><input name="data[oxygen_level]" value="<%= data.oxygen_level %>"><br>
+      <label for="data[area]"></label>Area: <input name="data[area]" value="<%= data.area %>"><br>
+      <label for="data[city]"></label>City: <input name="data[city]" value="<%= data.city %>"><br>
+      <label for="data[state]"></label>State: <input name="data[state]" value="<%= data.state %>"><br>
+      <label for="data[pincode]"></label>Pincode: <input name="data[pincode]" value="<%= data.pincode %>"><br>
       <button>Update</button>
     </form>
 
