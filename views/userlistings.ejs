@@ -37,6 +37,11 @@
           <td><%= row.state %></td>
           <td><%= row.pincode %></td>
           <td><a href="/listings/<%= row.listingId %>">edit</a></td>
+          <td>
+            <form action="/listings/<%= row.listingId %>?_method=DELETE" method="POST">
+              <button>DELETE</button>
+            </form>
+          </td>
         </tr>
         <% } %>
       </tbody>
