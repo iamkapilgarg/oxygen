@@ -56,14 +56,14 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  deleteListing(req.params.id)
+  deleteListingById(req.params.id)
     .then((data) => {
       res.status(204).redirect('/listings');
     })
 });
 
 router.patch("/:id", (req, res) => {
-  updateListing(req.params.id, req.body)
+  updateListingById(req.params.id, req.body)
     .then((data) => {
       res.status(200).redirect('/listings');
     })
