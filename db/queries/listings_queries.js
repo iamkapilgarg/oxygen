@@ -32,21 +32,61 @@ const postListing = (list) => {
     });
 };
 
-const deleteListing = (id) => {
+const getListingById = (id) => {
+    return knex('listings')
+        .join('resources', 'listings.resource_id', 'resources.id')
+        .join('users', 'listings.user_id', 'users.id')
+        .where('listings.id', id)
+        .select('users.id',
+            'users.name',
+            'users.phone_number',
+            'listings.city',
+            'listings.state',
+            'listings.area',
+            'listings.pincode',
+            'resources.name',
+            'listings.quantity',
+            'listings.listing_type',
+            'listings.oxygen_level'
+        );
+}
+
+const listListingsByUserId = (id) => {
+    return knex('listings')
+        .join('resources', 'listings.resource_id', 'resources.id')
+        .join('users', 'listings.user_id', 'users.id')
+        .where('users.id', id)
+        .select('users.id',
+            'users.name',
+            'users.phone_number',
+            'listings.city',
+            'listings.state',
+            'listings.area',
+            'listings.pincode',
+            'resources.name',
+            'listings.quantity',
+            'listings.listing_type',
+            'listings.oxygen_level'
+        );
+}
+
+const deleteListingById = (id) => {
     return knex('listings')
         .where('id', id)
         .del();
 }
 
-const updateListing = (id, listing) => {
+const updateListingById = (id, listing) => {
     return knex('listings')
         .where('id', id)
         .update(listing);
 }
 
 module.exports = {
-    listListings,
     postListing,
-    deleteListing,
-    updateListing
+    getListingById,
+    deleteListingById,
+    updateListingById,
+    listListings,
+    listListingsByUserId
 }
