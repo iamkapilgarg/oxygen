@@ -19,7 +19,7 @@
   <body>
     <%- include('partials/_header') %>
     <h1>Listing</h1>
-    <form action="/listings/<%= data.id %>?_method=PUT" method="POST">
+    <form action="/listings/<%= listingId %>?_method=PUT" method="POST">
       <label for="data[name]"></label>Resource: <input name="data[name]" value="<%= data.name %>" readonly><br>
       <label for="data[phone_number]">Phone: </label><input name="data[phone_number]" value="<%= data.phone_number %>" readonly><br>
       <label for="data[listing_type]">I am a: </label><input name="data[listing_type]" value="<%= data.listing_type %>" readonly><br>
