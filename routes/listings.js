@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { listResources } = require('../db/queries/resources_queries')
 const { listListings, postListing, deleteListingById, updateListingById, getListingById, listListingsByUserId } = require('../db/queries/listings_queries');
+
 const {places} = require('../resources/state-city')
 
 router.get("/", (req, res) => {
@@ -27,9 +28,8 @@ router.get("/new", (req, res) => {
     res.render('new_listing', templateVars);
   }).catch((err) => {
     console.log(err)
-  })
+    })
 });
-
 router.get("/me", (req, res) => {
   const userId = req.session.userId;
   const username = req.session.username;
@@ -38,7 +38,7 @@ router.get("/me", (req, res) => {
       'data': data,
       username
     };
-    res.render('user_listings', templateVars);
+    res.render('userlistings', templateVars);
   })
 });
 
