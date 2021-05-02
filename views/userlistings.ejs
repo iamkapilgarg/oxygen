@@ -17,25 +17,29 @@
     <table class="table table-striped">
       <thead>
         <tr>
-        <th scope="col">name</th>
-        <th scope="col">Phone</th>
         <th scope="col">Type</th>
-        <th scope="col">Area</th>
-        <th scope="col">City</th>
+        <th scope="col">Resource</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Oxygen Level</th>
         <th scope="col">State</th>
-        <th scope="col">PIN</th>
+        <th scope="col">City</th>
+        <th scope="col">Area</th>
+        <th scope="col">Pincode</th>
+        <th scope="col">Phone</th>
       </tr>
       </thead>
       <tbody>
         <% for(let row of data) {%>
         <tr>
-          <td><%= row.name %></td>
-          <td><%= row.phone_number %></td>
           <td><%= row.listing_type %></td>
-          <td><%= row.area %></td>
-          <td><%= row.city %></td>
+          <td><%= row.name %></td>
+          <td><%= row.quantity %></td>
+          <td><%= row.oxygen_level %></td>
           <td><%= row.state %></td>
+          <td><%= row.city %></td>
+          <td><%= row.area %></td>
           <td><%= row.pincode %></td>
+          <td><%= row.phone_number %></td>
           <td><a href="/listings/<%= row.listingId %>">edit</a></td>
           <td>
             <form action="/listings/<%= row.listingId %>?_method=DELETE" method="POST">
