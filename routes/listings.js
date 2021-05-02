@@ -68,7 +68,8 @@ router.get("/:id", (req, res) => {
   let username = req.session.username;
   getListingById(req.params.id).then(data => {
     const templateVars = {
-      'data': data[0],
+      listingId: req.params.id,
+      data: data[0],
       username
     };
     res.render('listing', templateVars);
