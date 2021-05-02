@@ -76,7 +76,6 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  console.log(req.params);
   deleteListingById(req.params.id)
     .then((data) => {
       res.status(204).redirect('/listings');
