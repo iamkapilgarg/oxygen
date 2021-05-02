@@ -5,6 +5,7 @@ const { listResources } = require('../db/queries/resources_queries')
 const { listListings, postListing, deleteListingById, updateListingById, getListingById } = require('../db/queries/listings_queries');
 const { getUserById } = require('../db/queries/users_queries')
 
+const {places} = require('../resources/state-city')
 
 router.get("/", (req, res) => {
   let username = req.session.username;
@@ -19,17 +20,19 @@ router.get("/", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
+  console.log("nikhil:",places);
   let username = req.session.username;
   listResources().then(data => {
     const templateVars = {
       data,
-      username
+      username,
+      'states':places
     };
     res.render('new_listing', templateVars);
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/new", (req, res) => {
   console.log("Request Body:", req.body);
   postListing(req.body)
     .then((data) => {
