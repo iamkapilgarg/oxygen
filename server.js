@@ -13,8 +13,9 @@ const morgan = require('morgan');
 const listingsRoutes = require("./routes/listings");
 const resourcesRoutes = require("./routes/resources");
 const registerRoutes = require("./routes/register");
-const loginRoutes = require("./routes/login")
-const logoutRoutes = require("./routes/logout")
+const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
+const userRoutes = require("./routes/users");
 const cookieSession = require('cookie-session');
 
 
@@ -38,13 +39,14 @@ app.use("/listings", listingsRoutes);
 app.use("/resources", resourcesRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
-app.use("/logout", logoutRoutes)
+app.use("/logout", logoutRoutes);
+app.use("/users", userRoutes);
 
 
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.redirect("/listings");
 });
 
 app.listen(PORT, () => {
