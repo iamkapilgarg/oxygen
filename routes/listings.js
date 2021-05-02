@@ -63,7 +63,6 @@ router.delete("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  
   updateListingById(req.params.id, updateListingObject(req.body.data))
     .then((data) => {
       res.status(200).redirect('/listings');
