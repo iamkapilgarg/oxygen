@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
@@ -14,30 +19,20 @@
   <body>
     <%- include('partials/_header') %>
     <h1>Listing</h1>
-    <table>
-      <thead>
-        <th>name</th>
-        <th>Phone</th>
-        <th>Type</th>
-        <th>Area</th>
-        <th>City</th>
-        <th>State</th>
-        <th>PIN</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= data.name %></td>
-          <td><%= data.phone_number %></td>
-          <td><%= data.listing_type %></td>
-          <td><%= data.area %></td>
-          <td><%= data.city %></td>
-          <td><%= data.state %></td>
-          <td><%= data.pincode %></td>
-        </tr>
-      </tbody>
-    </table>
+    <form action="/listings/<%= data.id %>?_method=PUT" method="POST">
+      <input name="data[name]" value="<%= data.name %>" readonly>
+      <input name="data[phone_number]" value="<%= data.phone_number %>" readonly>
+      <input name="data[listing_type]" value="<%= data.listing_type %>" readonly>
+      <input name="data[oxygen_level]" value="<%= data.oxygen_level %>">
+      <input name="data[area]" value="<%= data.area %>">
+      <input name="data[city]" value="<%= data.city %>">
+      <input name="data[state]" value="<%= data.state %>">
+      <input name="data[pincode]" value="<%= data.pincode %>">
+      <button>Update</button>
+    </form>
+
     <form action="/listings/<%= data.id %>?_method=DELETE" method="POST">
       <button>DELETE</button>
-  </form>
+    </form>
   </body>
 </html>

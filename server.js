@@ -7,6 +7,7 @@ const ENV = process.env.ENV || "development";
 const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
+const methodOverride = require('method-override');
 const app = express();
 const morgan = require('morgan');
 const listingsRoutes = require("./routes/listings");
@@ -14,6 +15,7 @@ const resourcesRoutes = require("./routes/resources");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login")
 const cookieSession = require('cookie-session');
+
 
 app.use(cookieSession({
   name: 'session',
@@ -28,8 +30,9 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-
+app.use(methodOverride('_method'));
 app.use(express.static("public"));
+
 app.use("/listings", listingsRoutes);
 app.use("/resources", resourcesRoutes);
 app.use("/register", registerRoutes);

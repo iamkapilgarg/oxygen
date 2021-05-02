@@ -62,8 +62,9 @@ router.delete("/:id", (req, res) => {
     })
 });
 
-router.patch("/:id", (req, res) => {
-  updateListingById(req.params.id, req.body)
+router.put("/:id", (req, res) => {
+  
+  updateListingById(req.params.id, listingObject(req.body.data))
     .then((data) => {
       res.status(200).redirect('/listings');
     })
@@ -72,5 +73,16 @@ router.patch("/:id", (req, res) => {
       res.status(400).end();
     });
 });
+
+const listingObject = obj => {
+  return {
+    quantity: obj.quantity,
+    oxygen_level: obj.oxygen_level,
+    city: obj.city,
+    state: obj.state,
+    area: obj.area,
+    pincode: obj.pincode
+  }
+}
 
 module.exports = router;
