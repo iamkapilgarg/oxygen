@@ -12,6 +12,7 @@ const morgan = require('morgan');
 const listingsRoutes = require("./routes/listings");
 const resourcesRoutes = require("./routes/resources");
 const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login")
 const cookieSession = require('cookie-session');
 
 app.use(cookieSession({
@@ -27,10 +28,12 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 app.use(express.static("public"));
 app.use("/listings", listingsRoutes);
 app.use("/resources", resourcesRoutes);
 app.use("/register", registerRoutes);
+app.use("/login", loginRoutes);
 
 
 app.set("view engine", "ejs");
