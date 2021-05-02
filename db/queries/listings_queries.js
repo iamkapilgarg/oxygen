@@ -1,0 +1,52 @@
+const knex = require('../../lib/db');
+
+const listListings = () => {
+    return knex('listings')
+        .join('resources', 'listings.resource_id', 'resources.id')
+        .join('users', 'listings.user_id', 'users.id')
+        .select('users.id',
+            'users.name',
+            'users.phone_number',
+            'listings.city',
+            'listings.state',
+            'listings.area',
+            'listings.pincode',
+            'resources.name',
+            'listings.quantity',
+            'listings.listing_type',
+            'listings.oxygen_level'
+        );
+}
+
+const postListing = (list) => {
+    return knex("listings").insert({
+        user_id: list.user_id,
+        resource_id: list.resource_id,
+        quantity: list.quantity,
+        listing_type: list.listing_type,
+        oxygen_level: list.oxygen_level,
+        state: list.state,
+        city: list.city,
+        area: list.area,
+        pincode: list.pincode
+    });
+};
+
+const deleteListing = (id) => {
+    return knex('listings')
+        .where('id', id)
+        .del();
+}
+
+const updateListing = (id, listing) => {
+    return knex('listings')
+        .where('id', id)
+        .update(listing);
+}
+
+module.exports = {
+    listListings,
+    postListing,
+    deleteListing,
+    updateListing
+}
