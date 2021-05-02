@@ -32,8 +32,21 @@ const listResources = () => {
   .select('*');
 }
 
+const postListing = (list) => {
+  console.log("List on the way ", list);
+
+  return knex("listings").insert({
+    user_id: list.user_id,
+    resource_id: list.resource_id,
+    quantity: list.quantity,
+    listing_type: list.listing_type,
+    oxygen_level: list.oxygen_level,
+  });
+};
+
 module.exports = {
   listListings,
   addResource,
   listResources,
+  postListing
 }
