@@ -4,8 +4,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { getUserByPhone } = require('../db/queries/users_queries')
 
-
-
 router.get("/", (req, res) => {
   res.render('login')
 });
@@ -31,10 +29,8 @@ router.post("/", (req, res) => {
 
 const matchPhonePassword = function (phone, password, user) {
   if (user.phone_number === phone && bcrypt.compareSync(password, user.password)) {
-    console.log('returning true');
     return true;
   }
-  console.log('returning false');
   return false;
 };
 
