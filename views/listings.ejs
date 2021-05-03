@@ -22,6 +22,23 @@
   </head>
 
   <body>
+    <button onclick="subscribe()">Subscribe</button>
+    <script>
+addEventListener('load', async()=>{
+  let sw = navigator.serviceWorker.register('./sw.js')
+  console.log(sw);
+})
+
+async function subscribe(){
+  let sw = await navigator.serviceWorker.ready;
+  let push = await sw.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey :  'BAGmFlhznV_rfE2jC1X7gmSxecW9ewd4icNrtIYuPSgcbjHolEw6mLm0sflMgjhXFlKodaxUhy30CeVnBykwpD8'
+  })
+  console.log(JSON.stringify(push));
+}
+
+    </script>
     <%- include('partials/_header') %>
     <div class="container">
       <header class="jumbotron">
