@@ -25,7 +25,7 @@
     <button onclick="subscribe()">Subscribe</button>
     <script>
 addEventListener('load', async()=>{
-  let sw = navigator.serviceWorker.register('/scripts/sw.js')
+  let sw = navigator.serviceWorker.register('./sw.js')
   console.log(sw);
 })
 
