@@ -1,38 +1,30 @@
-<header>
-  <!-- <nav class="navbar navbar-light avbar-expand-md " style="background-color: #e3f2fd;" bg-success> -->
-  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-success" > -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/listings"
-      ><img src="/images/o2.png" alt="O2 width="50px" height="50px"">
-    </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#""><img src="/images/o2.png" alt="O2 width="50px" height="50px""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <% if(typeof username === 'undefined') { %>
-        <a class="nav-item nav-link" href="/login">Login</a>
-        <a class="nav-item nav-link" href="/register">Register</a>
-        <% }else { %>
-        <span class="nav-item nav-link disabled"><%= username %></span>
-        <form method="POST" action="/logout">
-          <button type="submit" class="btn btn-info">Logout</button>
-        </form>
-        <a class="nav-item nav-link" href="/listings/new">Create new listing</a>
-        <a class="nav-ite nav-link" href="/listings/me">Your listings</a>
-        <% } %>
-      </div>
-    </div>
-    <div class="navbar-nav"></div>
-    <div class="navbar-nav"></div>
-  </nav>
-</header>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if(typeof username === 'undefined') { %>
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav mr-right">
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Register">Register <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <% } else { %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/listings/me">My Listings <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      <a class="nav-link" href="/listings/me"><%= username %> <span class="sr-only">(current)</span></a>
+      <form method="POST" action="/logout" class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+      <% } %>
+  </div>
+</nav>
