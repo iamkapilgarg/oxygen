@@ -41,6 +41,7 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">Type</th>
+            <th scope="col">Last Modified</th>
             <th scope="col">Resource</th>
             <th scope="col">Quantity</th>
             <th scope="col">Oxygen Level</th>
@@ -57,6 +58,7 @@
           <% for(let row of data) {%>
           <tr>
             <td><%= row.listing_type %></td>
+            <td><%= row.lastmodified %></td>
             <td><%= row.name %></td>
             <td><%= row.quantity %></td>
             <td><%= row.oxygen_level %></td>

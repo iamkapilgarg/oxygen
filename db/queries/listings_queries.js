@@ -15,7 +15,8 @@ const listListings = () => {
             'listings.quantity',
             'listings.listing_type',
             'listings.oxygen_level',
-            'listings.id'
+            'listings.id',
+            'listings.lastmodified' 
         );
 }
 
