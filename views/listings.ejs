@@ -23,6 +23,15 @@
 
   <body>
     <%- include('partials/_header') %>
+    <div class="container">
+        <header class="jumbotron">
+          <div class="container">
+              <h1>Welcome To ShareO2!</h1>
+              <p>Its all about saving lives</p>
+              <% if(typeof username !== 'undefined') { %>
+                <p>
+                  <a class="btn btn-primary btn-large" href="/listings/new">Add New Listings</a>
+                </p>
     <br>
     <table class="table table-responsive" id="list">
       <thead class="thead-light">
@@ -65,12 +74,55 @@
               ><i class="fa fa-whatsapp" style="font-size: 24px"></i>
             </a>
               <% } %>
-          </td>
-        </tr>
-        <% } %>
-      </tbody>
-    </table>
+          </div>
+        </header>
+      <table class="table table-responsive" id="list">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Resource</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Oxygen Level</th>
+            <th scope="col">Name</th>
 
+            <th scope="col">State</th>
+            <th scope="col">City</th>
+            <th scope="col">Area</th>
+            <th scope="col">PIN</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let row of data) {%>
+          <tr>
+            <td><%= row.listing_type %></td>
+            <td><%= row.name %></td>
+            <td><%= row.quantity %></td>
+            <td><%= row.oxygen_level %></td>
+            <td><%= row.username %></td>
+            <td><%= row.state %></td>
+            <td><%= row.city %></td>
+            <td><%= row.area %></td>
+            <td><%= row.pincode %></td>
+
+            <td>
+              <% if(typeof username === 'undefined') { %>
+              <p>*******</p>
+              <% }else { %>
+                <p><%= row.phone_number %></p>
+              <a href="tel:<%= row.phone_number %>"
+                ><i class="fa fa-phone" style="font-size: 24px"></i>
+              </a>
+              <a href=" https://wa.me/+91<%= row.phone_number %>"
+                ><i class="fa fa-whatsapp" style="font-size: 24px"></i>
+              </a>
+                <% } %>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
     <script type="text/javascript" src="/scripts/utils.js"></script>
   </body>
 </html>
