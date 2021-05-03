@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#""><img src="/images/o2.png" alt="O2 width="50px" height="50px""></a>
+  <a class="navbar-brand" href="/listings""><img src="/images/o2.png" alt="O2 width="50px" height="50px""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,17 +8,17 @@
       <% if(typeof username === 'undefined') { %>
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav mr-right">
-        <li class="nav-item active">
-          <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/Register">Register <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <% } else { %>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/listings/me">My Listings <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings/me">My Listings</a>
           </li>
         </ul>
       <a class="nav-link" href="/listings/me"><%= username %> <span class="sr-only">(current)</span></a>

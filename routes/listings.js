@@ -38,7 +38,7 @@ router.get("/me", (req, res) => {
       'data': data,
       username
     };
-    res.render('userlistings', templateVars);
+    res.render('user_listings', templateVars);
   })
 });
 
