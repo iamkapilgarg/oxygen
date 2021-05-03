@@ -43,12 +43,13 @@ router.get("/me", (req, res) => {
 });
 
 router.post("/new", (req, res) => {
+  console.log("typeof",typeof req.body.oxygenlevel, req.body.oxygenlevel===undefined||req.body.oxygen_level==="");
   const list = {
     user_id: req.session.userId,
     resource_id: req.body.resource,
-    quantity: req.body.quantity,
+    quantity: req.body.quantity!==undefined?req.body.quantity:1,
     listing_type: req.body.type,
-    oxygen_level: req.body.oxygenlevel,
+    oxygen_level: req.body.oxygenlevel===undefined||req.body.oxygen_level===""?req.body.oxygenlevel:'1',
     state: req.body.State,
     city: req.body.City,
     area: req.body.area,
