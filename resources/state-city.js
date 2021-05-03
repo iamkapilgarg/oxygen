@@ -452,7 +452,6 @@ const places =  {
     "Wadi",
     "Yadgir",
   ],
-  Karnatka: ["Mysore"],
   Kerala: [
     "Adoor",
     "Alappuzha",

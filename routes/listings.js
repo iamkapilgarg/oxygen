@@ -71,7 +71,8 @@ router.get("/:id", (req, res) => {
     const templateVars = {
       listingId: req.params.id,
       data: data[0],
-      username
+      username,
+      'states':places
     };
     res.render('listing', templateVars);
   });
@@ -85,6 +86,7 @@ router.delete("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
+  console.log(req.body.data);
   updateListingById(req.params.id, updateListingObject(req.body.data))
     .then((data) => {
       res.status(200).redirect('/listings');
