@@ -13,7 +13,7 @@
 
   <body>
     <%- include('partials/_header') %>
-    <h1>Listing</h1>
+    <h1>Your Listings</h1>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -41,7 +41,7 @@
           <td><%= row.pincode %></td>
           <td><%= row.phone_number %></td>
           <td>
-            <form href="/listings/<%= row.listingId %>">
+            <form action="/listings/<%= row.listingId %>" method="GET">
               <button class="btn btn-lg btn-info btn-block">More Info</button>
             </form>
           </td>
