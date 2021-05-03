@@ -4,12 +4,29 @@ $(document).ready(function(){
 		let states = JSON.parse($('#allstates').val());
 		state= states[this.value]
 		$('#city').children().remove().end()
+		$('#city').append(new Option("Other", "Other"));
 		for(let city in state){
 			$('#city').append(new Option(state[city], state[city]));
 		}
 	  });
 
+	  $('#resource').on('change', function() {
+		if(this.value==="1")
+			{
+				$("#quantity").attr("disabled", "disabled");
+				$("#quantity").val(1)
+			}
+		else{
+			$("#quantity").removeAttr("disabled");
+			$("#quantity").val()
+		}
+	  });
+
+
 })
+
+
+
 
 var filtersConfig = {
 	
