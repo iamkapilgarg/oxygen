@@ -24,17 +24,19 @@
   <body>
     <%- include('partials/_header') %>
     <div class="container">
-        <header class="jumbotron">
-          <div class="container">
-              <h1>Welcome To ShareO2!</h1>
-              <p>Its all about saving lives</p>
-              <% if(typeof username !== 'undefined') { %>
-                <p>
-                  <a class="btn btn-primary btn-large" href="/listings/new">Add New Listings</a>
-                </p>
-              <% } %>
-          </div>
-        </header>
+      <header class="jumbotron">
+        <div class="container">
+          <h1>Welcome To ShareO2!</h1>
+          <p>Its all about saving lives</p>
+          <% if(typeof username !== 'undefined') { %>
+          <p>
+            <a class="btn btn-primary btn-large" href="/listings/new"
+              >Add New Listings</a
+            >
+          </p>
+          <% } %>
+        </div>
+      </header>
       <table class="table table-responsive" id="list">
         <thead class="thead-light">
           <tr>
@@ -68,14 +70,14 @@
               <% if(typeof username === 'undefined') { %>
               <p>*******</p>
               <% }else { %>
-                <p><%= row.phone_number %></p>
+              <p><%= row.phone_number %></p>
               <a href="tel:<%= row.phone_number %>"
                 ><i class="fa fa-phone" style="font-size: 24px"></i>
               </a>
               <a href=" https://wa.me/+91<%= row.phone_number %>"
                 ><i class="fa fa-whatsapp" style="font-size: 24px"></i>
               </a>
-                <% } %>
+              <% } %>
             </td>
           </tr>
           <% } %>
