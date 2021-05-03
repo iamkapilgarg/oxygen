@@ -32,9 +32,9 @@ var filtersConfig = {
 	
 	base_path: 'https://unpkg.com/tablefilter@latest/dist/tablefilter/',
 	col_0: 'select',
-	col_1: 'select',
-	col_5: 'select',
+	col_2: 'select',
 	col_6: 'select',
+	col_7: 'select',
 	alternate_rows: true,
 	rows_counter: true,
 	btn_reset: true,
@@ -43,7 +43,7 @@ var filtersConfig = {
 	highlight_keywords: true,
 	no_results_message: true,
 	col_types: [
-	  'string', 'string', 'number',
+		'string', 'string', 'string', 'number',
 	  'number', 'string','string', 'string',
 	  'string', 'number', 'number'
 	],
