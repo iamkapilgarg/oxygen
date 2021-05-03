@@ -40,10 +40,14 @@
           <td><%= row.area %></td>
           <td><%= row.pincode %></td>
           <td><%= row.phone_number %></td>
-          <td><a href="/listings/<%= row.listingId %>">edit</a></td>
+          <td>
+            <form href="/listings/<%= row.listingId %>">
+              <button class="btn btn-lg btn-info btn-block">More Info</button>
+            </form>
+          </td>
           <td>
             <form action="/listings/<%= row.listingId %>?_method=DELETE" method="POST">
-              <button>DELETE</button>
+              <button class="btn btn-lg btn-danger btn-block">Delete</button>
             </form>
           </td>
         </tr>
