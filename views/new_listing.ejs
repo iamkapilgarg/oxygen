@@ -1,102 +1,131 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <title>Listing Page</title>
 
-<head>
-  <title>Listing Page</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/utils.js"></script>
+  </head>
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/utils.js"></script>
+  <body>
+    <%- include('partials/_header') %>
+    <div class="container">
+      <div class="row">
+        <h1 style="text-align: center">Listing Details</h1>
+        <div style="width: 40%; margin: 25px auto">
+          <form action="new" method="post">
+            <div class="form-group">
+              <label for=" listing_type"
+                >I am a:
+              </label>
+              <select name="type" id="type" class="form-control">
+                <option value="donor">Donor</option>
+                <option value="seeker">Seeker</option>
+              </select>
+            </div>
 
-</head>
+            <div class="form-group">
+              <label for="Resourse"
+                >Resource</label
+              >
+              <select
+                name="resource"
+                id="resource"
+                class="form-control"
+                required
+              >
+                <option value="" selected disabled>Select</option>
+                <% for (let resource of data){ %>
+                <option value="<%= resource.id %>"><%= resource.name %></option>
+                <%}%>
+              </select>
+            </div>
 
-<body>
-  <%- include('partials/_header') %>
-    <br>
-    <form action="new" method="post">
+            <div class="form-group">
+              <label for="quantity"
+                >Quantity</label
+              >
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                class="form-control"
+                required
+              />
+            </div>
 
-      <div class="form-group row">
-        <label for=" listing_type" class="col-sm-2 col-form-label">I am a: </label>
-        <div class="col-sm-10">
-          <select name="type" id="type" class="form-control">
-            <option value="donor">Donor</option>
-            <option value="seeker">Seeker</option>
-          </select>
+            <div class="form-group">
+              <label for="oxygenlevel"
+                >Oxygen Level</label
+              >
+              <input
+                type="number"
+                id="oxygen_level"
+                placeholder="Optional"
+                name="oxygenlevel"
+                class="form-control"
+              />
+            </div>
+
+            <input
+              type="hidden"
+              id="allstates"
+              value="<%= JSON.stringify(states) %>"
+              required
+            />
+
+            <div class="form-group">
+              <label for="State">State</label>
+              <select name="State" id="state" class="form-control" required>
+                <option value="" selected disabled>Select</option>
+                <% for (let state in states){ %>
+                <option value="<%= state %>"><%= state %></option>
+                <%}%>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="City">City</label>
+              <select name="City" id="city" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+              <label for="area">Area</label>
+              <input
+                type="text"
+                id="area"
+                name="area"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="pincode"
+                >Pincode</label
+              >
+              <input
+                type="text"
+                id="pincode"
+                name="pincode"
+                class="form-control"
+                required
+              />
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">submit</button>
+          </form>
         </div>
       </div>
-
-      <div class="form-group row">
-        <label for="Resourse" class="col-sm-2 col-form-label">Resource</label>
-        <div class="col-sm-10">
-          <select name="resource" id="resource" class="form-control" required>
-            <option value="" selected disabled >Select</option>
-            <% for (let resource of data){ %>
-              <option value="<%= resource.id %>">
-                <%= resource.name %>
-              </option>
-              <%}%>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
-        <div class="col-sm-10">
-          <input type="number" id="quantity" name="quantity" class="form-control" required>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="oxygenlevel" class="col-sm-2 col-form-label">Oxygen Level</label>
-        <div class="col-sm-10">
-          <input type="number" id="oxygen_level" placeholder="Optional" name="oxygenlevel" class="form-control">
-        </div>
-      </div>
-
-
-      <input type="hidden" id="allstates" value='<%= JSON.stringify(states) %>' required>
-
-      <div class="form-group row">
-        <label for="State" class="col-sm-2 col-form-label">State</label>
-        <div class="col-sm-10">
-          <select name="State" id="state" class="form-control" required>
-            <option value="" selected disabled>Select</option>
-            <% for (let state in states){ %>
-              <option value="<%= state %>">
-                <%= state %>
-              </option>
-              <%}%>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="City" class="col-sm-2 col-form-label">City</label>
-        <div class="col-sm-10">
-          <select name="City" id="city" class="form-control"></select>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="area" class="col-sm-2 col-form-label">Area</label>
-        <div class="col-sm-10">
-          <input type="text" id="area" name="area" class="form-control" required>
-        </div>
-      </div>
-
-      <div class="form-group row">
-      <label for="pincode" class="col-sm-2 col-form-label">Pincode</label>
-      <div class="col-sm-10">
-        <input type="text" id="pincode" name="pincode" class="form-control" required>
-      </div>
-      </div>
-      <button type="submit">submit</button>
-    </form>
-</body>
-
+    </div>
+  </body>
 </html>
