@@ -28,9 +28,11 @@
           <div class="container">
               <h1>Welcome To ShareO2!</h1>
               <p>Its all about saving lives</p>
-              <p>
-                 <a class="btn btn-primary btn-large" href="/listings/new">Add New Listings</a>
-              </p>
+              <% if(typeof username !== 'undefined') { %>
+                <p>
+                  <a class="btn btn-primary btn-large" href="/listings/new">Add New Listings</a>
+                </p>
+              <% } %>
           </div>
         </header>
       <table class="table table-responsive" id="list">
